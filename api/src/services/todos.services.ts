@@ -1,4 +1,4 @@
-import models from '../libs/sequelize';
+const {models} = require('../libs/sequelize')
 
 interface TodoType {
     id: number;
@@ -23,13 +23,16 @@ class TodosService {
 
     async create(data:TodoType) {
          // @ts-ignore
-        const response = await models.Todos.create(data);
+        const response = await models.Todos.create({
+            task: data.task,
+            done: false
+        });
         return response
     }
 
     async update(id:number, data:TodoType) {
         const model = await this.findOne(id)
-        const response = await model.update(data)
+        const response = await model.update({...model, done: data.done})
         return response
     }
 

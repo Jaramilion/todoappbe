@@ -6,7 +6,7 @@ const todosRouter =  express.Router();
 todosRouter
     .get('/', get)
     .post('/add', create)
-    .put('/update:id', update)
-    .delete('/delete:id', _delete)
+    .put('/update/:id', update)
+    .delete('/delete/:id', _delete)
 
 export default todosRouter

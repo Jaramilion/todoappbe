@@ -1,10 +1,7 @@
 import config from "../config/config"
 
-const { Sequelize } = require('sequelize')
-
-const setupModels = require('../models')
-
-
+import {Sequelize} from 'sequelize'
+import setupModels from "../models"
 
 const sequelize = new Sequelize(
     config.dbName,
@@ -19,4 +16,4 @@ const sequelize = new Sequelize(
 sequelize.sync()
 setupModels(sequelize)
 
-export default sequelize
+module.exports = sequelize
